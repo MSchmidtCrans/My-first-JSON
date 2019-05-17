@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick=callData() type="button">Start JSON call</button><br>
+    <p id="demo"></p>
+</body>
+
+<script>
+    function callData() {
+    let x= new XMLHttpRequest();
+    x.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          textVal = JSON.parse(this.responseText);
+      document.getElementById("demo").innerHTML = textVal;
+        }
+    };
+  x.open("GET", "test_Json.txt", true);
+  x.send();
+}
+
+</script>
+</html>
