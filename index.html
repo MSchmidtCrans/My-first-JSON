@@ -8,21 +8,26 @@
 </head>
 <body>
     <button onclick=callData() type="button">Start JSON call</button><br>
-    <p id="demo"></p>
+    <p id="recVal"></p>
 </body>
 
 <script>
+    let Val = { "name": "Marie", "gender": "girls"};
+    jsonVal = JSON.stringify(Val);
+    
     function callData() {
     let x= new XMLHttpRequest();
     x.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          textVal = JSON.parse(this.responseText);
-      document.getElementById("demo").innerHTML = textVal;
+          let phpVal = JSON.parse(this.responseText);
+      document.getElementById("recVal").innerHTML = phpVal;
         }
     };
-  x.open("GET", "test_Json.txt", true);
+  x.open("GET", "myphp.php?x=" + jsonVal, true);
   x.send();
 }
+
+
 
 </script>
 </html>

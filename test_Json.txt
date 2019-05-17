@@ -1,1 +1,1 @@
-{ "name":"John" }
+{ "firstName":"John", "lastName":"Doe" }
